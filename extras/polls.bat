@@ -153,7 +153,7 @@ echo     list_filter = ['pub_date'] >> admin.py
 echo     search_fields = ['question_text'] >> admin.py
 echo. >> admin.py
 echo admin.site.register(Question, QuestionAdmin) >> admin.py
-echo admin.site.register(Choice) >> admin.py
+echo #admin.site.register(Choice) #uncomment to include Choice separately (it's already inlined inside QuestionAdmin) >> admin.py
 
 mkdir templates
 cd templates
@@ -234,14 +234,15 @@ cd static
 mkdir poll1
 cd poll1
 
-echo li a { color: navy; } > style.css
-echo body { background: lime; } >> style.css
+echo li a { color: navy; text-decoration: none; font-size: 160%%; } > style.css
+echo body { background-color: lime; } >> style.css
 
 cd..
 cd..
 
 REM -------------------------------------------------------------------------------------------------------------------------
-REM Use this section as a pattern to add any subsequent poll (also see comments to add it to path / INSTALLED_APPS / migration)
+REM Use this section as a pattern to add any subsequent poll (also see comments to add it to path / INSTALLED_APPS / migration).
+REM Just make sure to update the poll number wherever it might be included.
 
 cd..
 cd poll2
@@ -353,7 +354,7 @@ echo     list_filter = ['pub_date'] >> admin.py
 echo     search_fields = ['question_text'] >> admin.py
 echo. >> admin.py
 echo admin.site.register(Question, QuestionAdmin) >> admin.py
-echo admin.site.register(Choice) >> admin.py
+echo #admin.site.register(Choice) #uncomment to include Choice separately (it's already inlined inside QuestionAdmin) >> admin.py
 
 mkdir templates
 cd templates
@@ -434,8 +435,8 @@ cd static
 mkdir poll2
 cd poll2
 
-echo li a { color: maroon; } > style.css
-echo body { background: cyan; } >> style.css
+echo li a { color: maroon; text-decoration: none; font-size: 160%%; } > style.css
+echo body { background-color: cyan; } >> style.css
 
 cd..
 cd..
