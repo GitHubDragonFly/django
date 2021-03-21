@@ -462,18 +462,18 @@ else
 
   echo > temp.txt
 
-  cat settings.py | while read line || [[ -n $line ]];
+  cat settings.py | while IFS= read -r line; #preserve spaces in strings
   do
     if [ "$line" = "TIME_ZONE = 'UTC'" ];
     then
       echo TIME_ZONE = \'EST\' >> temp.txt
     elif [ "$line" = "INSTALLED_APPS = [" ];
     then
-      echo $line >> temp.txt
-      echo     \'poll1.apps.Poll1Config\', >> temp.txt
-      echo     \'poll2.apps.Poll2Config\', >> temp.txt
+      echo "$line" >> temp.txt
+      echo '    '\'poll1.apps.Poll1Config\', >> temp.txt
+      echo '    '\'poll2.apps.Poll2Config\', >> temp.txt
     else
-      echo $line >> temp.txt
+      echo "$line" >> temp.txt
     fi
   done
 
@@ -520,5 +520,3 @@ else
 
   python3 manage.py runserver
 fi
-
-exit 0
